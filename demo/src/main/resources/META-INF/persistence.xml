@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
+	version="1.0">
+
+	<persistence-unit name="demo" transaction-type="RESOURCE_LOCAL">
+		<class>com.example.entity.Example</class>
+		<exclude-unlisted-classes>true</exclude-unlisted-classes>
+		<properties>
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+			<!-- <property name="hibernate.cache.use_second_level_cache" value="false"/> 
+				<property name="hibernate.cache.use_query_cache" value="false"/> -->
+			<property name="use_sql_comments" value="true" />
+			<!-- <property name="javax.persistence.sharedCache.mode" value="ENABLE_SELECTIVE" 
+				/> -->
+			<!-- <property name="hibernate.dialect" value="org.hibernate.dialect.OracleDialect" /> -->
+			<property name="jboss.as.jpa.providerModule" value="hibernate3-bundled" />
+		</properties>
+
+	</persistence-unit>
+
+</persistence>
