@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<head th:replace="common/header :: head"></head>
+	
+	<!-- Add additional custom css here - START -->
+	
+	
+	
+	<!-- Add additional custom css here - END -->
+</head>
+<body>
+	<div th:replace="common/header :: top-navigation">...</div>
+
+	<!-- Add page specific code/html START -->
+	
+	<div class="container">
+
+		<div class="page-header">
+			<h1>Template</h1>
+		</div>
+		<p class="lead">
+			Pin a fixed-height footer to the bottom of the viewport in desktop
+			browsers with this custom HTML and CSS. A fixed navbar has been added
+			with
+		</p>
+	</div>
+	
+	<!-- Add page specific code/html END -->
+
+	<div th:replace="common/footer :: footer">...</div>
+    
+</body>
+</html>
