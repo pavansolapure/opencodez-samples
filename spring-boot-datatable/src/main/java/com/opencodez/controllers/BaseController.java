@@ -23,9 +23,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
 import com.opencodez.domain.User;
+import com.opencodez.domain.UserModel;
 import com.opencodez.domain.pagination.DataTableRequest;
 import com.opencodez.domain.pagination.DataTableResults;
 import com.opencodez.domain.pagination.PaginationCriteria;
+import com.opencodez.repo.GenericRepo;
 import com.opencodez.repo.UserRepository;
 import com.opencodez.util.AppUtil;
 
@@ -39,6 +41,9 @@ public class BaseController {
 	@Autowired
 	private UserRepository userRepo;
 	
+	@Autowired
+	private GenericRepo genericRepo;
+	
 	/** The entity manager. */
 	@PersistenceContext
 	private EntityManager entityManager;
@@ -48,7 +53,7 @@ public class BaseController {
 	public ModelAndView home(@RequestParam(value = "name", defaultValue = "World") String name) {
 		ModelAndView mv = new ModelAndView("index");
 		mv.addObject("userModel", new User());
-		List<User> userList  = userRepo.findAll();;
+		List<UserModel> userList  = genericRepo.getUserModel();
 		mv.addObject("userlist", userList);
 		return mv;
 	}
