@@ -3,7 +3,6 @@
  */
 package com.opencodez.domain;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -18,9 +17,7 @@ public class User {
 	private Long id;
 	private String name;
 	private String salary;
-	
-	@Column(name="totalrecords", updatable=false, insertable=false)
-    private Integer totalRecords;
+
 	
 	/**
 	 * @return the id
@@ -58,16 +55,16 @@ public class User {
 	public void setSalary(String salary) {
 		this.salary = salary;
 	}
-	/**
-	 * @return the totalRecords
-	 */
-	public Integer getTotalRecords() {
-		return totalRecords;
-	}
-	/**
-	 * @param totalRecords the totalRecords to set
-	 */
-	public void setTotalRecords(Integer totalRecords) {
-		this.totalRecords = totalRecords;
-	}
+//	/**
+//	 * @return the totalRecords
+//	 */
+//	public Integer getTotalRecords() {
+//		return totalRecords;
+//	}
+//	/**
+//	 * @param totalRecords the totalRecords to set
+//	 */
+//	public void setTotalRecords(Integer totalRecords) {
+//		this.totalRecords = totalRecords;
+//	}
 }

@@ -18,6 +18,7 @@ public class UserModel {
 	private String name;
 	private String salary;
 	
+    private Integer totalRecords;
 	
 	/**
 	 * @return the id
@@ -55,4 +56,17 @@ public class UserModel {
 	public void setSalary(String salary) {
 		this.salary = salary;
 	}
+	/**
+	 * @return the totalRecords
+	 */
+	public Integer getTotalRecords() {
+		return totalRecords;
+	}
+	/**
+	 * @param totalRecords the totalRecords to set
+	 */
+	public void setTotalRecords(Integer totalRecords) {
+		this.totalRecords = totalRecords;
+	}
+	
 }

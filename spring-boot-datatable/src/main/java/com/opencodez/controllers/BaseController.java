@@ -52,7 +52,7 @@ public class BaseController {
 	@RequestMapping(value="/", method = RequestMethod.GET)
 	public ModelAndView home(@RequestParam(value = "name", defaultValue = "World") String name) {
 		ModelAndView mv = new ModelAndView("index");
-		mv.addObject("userModel", new User());
+		mv.addObject("userModel", new UserModel());
 		List<UserModel> userList  = genericRepo.getUserModel();
 		mv.addObject("userlist", userList);
 		return mv;
@@ -70,17 +70,17 @@ public class BaseController {
 		DataTableRequest<User> dataTableInRQ = new DataTableRequest<User>(request);
 		PaginationCriteria pagination = dataTableInRQ.getPaginationRequest();
 		
-		String baseQuery = "SELECT id as id, name as name, salary as salary, (SELECT COUNT(1) FROM USER) AS totalrecords  FROM USER";
+		String baseQuery = "SELECT id as id, name as name, salary as salary, (SELECT COUNT(1) FROM USER) AS total_records  FROM USER";
 		String paginatedQuery = AppUtil.buildPaginatedQuery(baseQuery, pagination);
 		
 		System.out.println(paginatedQuery);
 		
-		Query query = entityManager.createNativeQuery(paginatedQuery, User.class);
+		Query query = entityManager.createNativeQuery(paginatedQuery, UserModel.class);
 		
 		@SuppressWarnings("unchecked")
-		List<User> userList = query.getResultList();
+		List<UserModel> userList = query.getResultList();
 		
-		DataTableResults<User> dataTableResult = new DataTableResults<User>();
+		DataTableResults<UserModel> dataTableResult = new DataTableResults<UserModel>();
 		dataTableResult.setDraw(dataTableInRQ.getDraw());
 		dataTableResult.setListOfDataObjects(userList);
 		if (!AppUtil.isObjectEmpty(userList)) {
@@ -97,13 +97,18 @@ public class BaseController {
 	}
 	
 	@RequestMapping(value="/adduser", method=RequestMethod.POST)
-	public String addUser(@ModelAttribute User userModel, Model model) {
+	public String addUser(@ModelAttribute UserModel userModel, Model model) {
 		if(null != userModel) {
 			
 			if(!AppUtil.isObjectEmpty(userModel.getId()) && 
 					!AppUtil.isObjectEmpty(userModel.getName()) && 
 					!AppUtil.isObjectEmpty(userModel.getSalary())) {
-				userRepo.save(userModel);
+				
+				User u = new User();
+				u.setId(userModel.getId());
+				u.setName(userModel.getName());
+				u.setSalary(userModel.getSalary());
+				userRepo.save(u);
 			}
 		}
 		return "redirect:/";
