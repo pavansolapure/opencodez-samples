@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<head th:replace="common/header :: head"></head>
+</head>
+<body>
+	<div th:replace="common/header :: top-navigation">...</div>
+
+	<div class="container">
+
+		<div class="page-header">
+			<h1>Currency Conversion</h1> 
+		</div>
+
+		
+<div class="row">
+	<div class="col-md-12">
+		
+		<div class="panel panel-info">
+
+			
+			<div class="panel-body">
+
+				<div class="row">
+					<div class="col-md-4">
+						<form action="#"  th:object="${spiridonModel}" method="post" id="spiridonForm" role="form" data-toggle="validator">
+
+
+<div class="form-group">
+	
+<label for="selectCurrency">Source Currency</label>
+<select   class="selectpicker show-tick form-control" id="sourceCurrency" name="sourceCurrency" th:field="*{currency}" >
+	<option th:each="currencyEnum : ${spiridonModel.getSupportedCurrencies()}" th:value="${currencyEnum}" 
+									th:text="${currencyEnum + ' - ' +currencyEnum.getDescription()}">Options</option> 
+</select>
+</div>
+<div class="form-group">
+<label for="selectCurrency">Target Currency</label>
+<select   class="selectpicker show-tick form-control" id="targetCurrency" name="targetCurrency" th:field="*{currency}" >
+	<option th:each="currencyEnum : ${spiridonModel.getSupportedCurrencies()}" th:value="${currencyEnum}" 
+									th:text="${currencyEnum + ' - ' +currencyEnum.getDescription()}">Options</option> 
+</select>
+	
+	
+</div>
+
+
+
+
+							<button type="button" id="btnSave" name="btnSave" class="btn btn-primary" >Convert</button>
+    
+						</form>
+						
+					</div>
+					<div class="col-md-2">
+<div class="form-group">
+	<label for="textReason">Reason</label> <input
+		type="text" class="form-control" id="textReason" name="textReason"
+		placeholder="Reason" />
+</div>
+		<div class="form-group">
+	<label for="textReason">Reason</label> <input
+		type="text" class="form-control" id="textReason" name="textReason"
+		placeholder="Reason" />
+</div>			
+					
+					</div>
+					
+					<div class="col-md-6">sss
+					</div>
+					
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</div>		
+		
+	</div>
+
+	<div th:replace="common/footer :: footer">...</div>
+    
+</body>
+</html>

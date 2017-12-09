@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<head th:replace="common/header :: head"></head>
+</head>
+<body>
+	<div th:replace="common/header :: top-navigation">...</div>
+
+	<div class="container">
+
+		<div class="page-header">
+			<h1>Currency Conversion</h1>
+		</div>
+
+		<div class="row">
+			<div class="col-md-11">
+				<form action="#" th:object="${converterModel}" method="post"
+					id="conversionForm" role="form" data-toggle="validator">
+
+					<div class="row">
+
+
+						<div class="col-md-2">
+							<div class="form-group">
+								<input type="text" class="form-control" id="srcAmount"
+									name="srcAmount" placeholder="" th:field="*{srcAmount}" />
+							</div>
+
+						</div>
+
+						<div class="col-md-3">
+							<div class="form-group">
+								<select class="selectpicker show-tick form-control"
+									id="sourceCurrency" name="sourceCurrency"
+									th:field="*{srcCurrency}">
+									<option
+										th:each="currencyEnum : ${converterModel.getSupportedCurrencies()}"
+										th:value="${currencyEnum}"
+										th:text="${currencyEnum + ' - ' +currencyEnum.getDescription()}">Options</option>
+								</select>
+
+							</div>
+
+						</div>
+						<div class="col-md-1 text-center">
+							<div class="form-group">
+								<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+							</div>
+						</div>
+
+						<div class="col-md-3">
+
+							<div class="form-group">
+
+								<select class="selectpicker show-tick form-control"
+									id="targetCurrency" name="targetCurrency"
+									th:field="*{tgtCurrency}">
+									<option
+										th:each="currencyEnum : ${converterModel.getSupportedCurrencies()}"
+										th:value="${currencyEnum}"
+										th:text="${currencyEnum + ' - ' +currencyEnum.getDescription()}">Options</option>
+								</select>
+
+							</div>
+
+						</div>
+
+						<div class="col-md-2">
+
+							<div class="form-group">
+								<input type="text" class="form-control" id="tgtAmount"
+									name="tgtAmount" placeholder="" th:field="*{tgtAmount}" />
+							</div>
+						</div>
+
+					</div>
+
+					<div class="row">
+						<div class="col-md-2">&nbsp;</div>
+						<div class="col-md-3">&nbsp;</div>
+						<div class="col-md-1 text-center">
+							<button type="button" id="btnConvert" name="btnConvert" class="btn btn-primary">Convert</button>
+						</div>
+						<div class="col-md-3">&nbsp;</div>
+
+						<div class="col-md-2">&nbsp;</div>
+					</div>
+
+	&nbsp;
+
+				</form>
+			</div>
+
+		</div>
+
+		<div class="row">
+			<div class="col-md-11">
+				<div class="alert alert-danger" role="alert" id="divAlert">
+					
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<!-- .container -->
+
+
+	<input type="hidden" th:value="@{/convert}" id="urlConverter" />
+
+
+	<div th:replace="common/footer :: footer">...</div>
+	
+	<script type="text/javascript" th:src="@{/js/converter.js}"></script>
+
+</body>
+</html>
