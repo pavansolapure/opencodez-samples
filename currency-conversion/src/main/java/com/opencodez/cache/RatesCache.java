@@ -33,5 +33,4 @@ public class RatesCache {
 	public void cacheRate(String code, BigDecimal rate) {
 		cache.put(code, rate);
 	}
-
 }

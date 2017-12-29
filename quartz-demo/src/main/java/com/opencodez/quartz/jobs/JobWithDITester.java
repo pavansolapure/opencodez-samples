@@ -24,9 +24,6 @@ public class JobWithDITester implements Job  {
 	@Value("${cron.frequency.jobwithditest}")
 	private String frequency;
 
-	// @Inject
-	//@Autowired
-	
 	@Inject
 	private ArbitraryDependency fieldInjectDependency;
 	
