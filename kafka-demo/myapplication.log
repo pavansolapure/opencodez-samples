@@ -126,3 +126,262 @@
 2017-12-29 13:51:08.045  INFO 134776 --- [Thread-2] s.c.a.AnnotationConfigApplicationContext : Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@3d1cfad4: startup date [Fri Dec 29 13:51:06 IST 2017]; root of context hierarchy
 2017-12-29 13:51:08.046  INFO 134776 --- [Thread-2] o.s.c.support.DefaultLifecycleProcessor  : Stopping beans in phase 2147483647
 2017-12-29 13:51:08.047  INFO 134776 --- [Thread-2] o.s.c.support.DefaultLifecycleProcessor  : Stopping beans in phase 0
+2018-01-08 14:13:32.283  INFO 24624 --- [main] com.opencodez.KafkaDemoApplication       : Starting KafkaDemoApplication on P5-LX-C6RWGC2 with PID 24624 (started by pavan.solapure in C:\Pavan Personal Data\Personal Wordpress\Github\opencodez-samples\kafka-demo)
+2018-01-08 14:13:32.289  INFO 24624 --- [main] com.opencodez.KafkaDemoApplication       : No active profile set, falling back to default profiles: default
+2018-01-08 14:13:32.391  INFO 24624 --- [main] s.c.a.AnnotationConfigApplicationContext : Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@1a38c59b: startup date [Mon Jan 08 14:13:32 IST 2018]; root of context hierarchy
+2018-01-08 14:13:33.228  INFO 24624 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.kafka.annotation.KafkaBootstrapConfiguration' of type [org.springframework.kafka.annotation.KafkaBootstrapConfiguration$$EnhancerBySpringCGLIB$$4bb0ca6f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-01-08 14:13:33.829  INFO 24624 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2018-01-08 14:13:33.839  INFO 24624 --- [main] o.s.c.support.DefaultLifecycleProcessor  : Starting beans in phase 2147483647
+2018-01-08 14:13:33.871  INFO 24624 --- [main] com.opencodez.KafkaDemoApplication       : Started KafkaDemoApplication in 2.201 seconds (JVM running for 3.669)
+2018-01-08 14:13:33.905  INFO 24624 --- [SimpleAsyncTaskExecutor-1] o.a.k.clients.producer.ProducerConfig    : ProducerConfig values: 
+	acks = all
+	batch.size = 16384
+	block.on.buffer.full = false
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 33554432
+	client.id = 
+	compression.type = none
+	connections.max.idle.ms = 540000
+	interceptor.classes = null
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 1
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 5
+	max.request.size = 1048576
+	metadata.fetch.timeout.ms = 60000
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 0
+	retry.backoff.ms = 100
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	timeout.ms = 30000
+	value.serializer = class com.opencodez.serializer.DeveloperSerializer
+
+2018-01-08 14:13:33.921  INFO 24624 --- [SimpleAsyncTaskExecutor-1] o.a.k.clients.producer.ProducerConfig    : ProducerConfig values: 
+	acks = all
+	batch.size = 16384
+	block.on.buffer.full = false
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 33554432
+	client.id = producer-1
+	compression.type = none
+	connections.max.idle.ms = 540000
+	interceptor.classes = null
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 1
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 5
+	max.request.size = 1048576
+	metadata.fetch.timeout.ms = 60000
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 0
+	retry.backoff.ms = 100
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	timeout.ms = 30000
+	value.serializer = class com.opencodez.serializer.DeveloperSerializer
+
+2018-01-08 14:13:34.567  INFO 24624 --- [SimpleAsyncTaskExecutor-1] o.a.kafka.common.utils.AppInfoParser     : Kafka version : 0.10.1.1
+2018-01-08 14:13:34.567  INFO 24624 --- [SimpleAsyncTaskExecutor-1] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId : f10ef2720b03b247
+2018-01-08 14:13:35.213  INFO 24624 --- [SimpleAsyncTaskExecutor-1] com.opencodez.kafka.CustomProducer       : Message sent to topic: test
+2018-01-08 14:13:35.216  INFO 24624 --- [SimpleAsyncTaskExecutor-1] o.a.k.clients.producer.KafkaProducer     : Closing the Kafka producer with timeoutMillis = 9223372036854775807 ms.
+2018-01-08 14:13:35.349  INFO 24624 --- [Thread-2] s.c.a.AnnotationConfigApplicationContext : Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@1a38c59b: startup date [Mon Jan 08 14:13:32 IST 2018]; root of context hierarchy
+2018-01-08 14:13:35.352  INFO 24624 --- [Thread-2] o.s.c.support.DefaultLifecycleProcessor  : Stopping beans in phase 2147483647
+2018-01-08 14:13:35.352  INFO 24624 --- [Thread-2] o.s.c.support.DefaultLifecycleProcessor  : Stopping beans in phase 0
+2018-01-08 14:13:35.353  INFO 24624 --- [Thread-2] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2018-01-08 14:14:24.268  INFO 34056 --- [main] com.opencodez.KafkaDemoApplication       : Starting KafkaDemoApplication on P5-LX-C6RWGC2 with PID 34056 (started by pavan.solapure in C:\Pavan Personal Data\Personal Wordpress\Github\opencodez-samples\kafka-demo)
+2018-01-08 14:14:24.273  INFO 34056 --- [main] com.opencodez.KafkaDemoApplication       : No active profile set, falling back to default profiles: default
+2018-01-08 14:14:24.358  INFO 34056 --- [main] s.c.a.AnnotationConfigApplicationContext : Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@1a38c59b: startup date [Mon Jan 08 14:14:24 IST 2018]; root of context hierarchy
+2018-01-08 14:14:25.199  INFO 34056 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.kafka.annotation.KafkaBootstrapConfiguration' of type [org.springframework.kafka.annotation.KafkaBootstrapConfiguration$$EnhancerBySpringCGLIB$$e7dfb23c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-01-08 14:14:25.591  INFO 34056 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2018-01-08 14:14:25.599  INFO 34056 --- [main] o.s.c.support.DefaultLifecycleProcessor  : Starting beans in phase 2147483647
+2018-01-08 14:14:25.617  INFO 34056 --- [main] com.opencodez.KafkaDemoApplication       : Started KafkaDemoApplication in 1.854 seconds (JVM running for 3.084)
+2018-01-08 14:14:25.659  INFO 34056 --- [SimpleAsyncTaskExecutor-1] o.a.k.clients.consumer.ConsumerConfig    : ConsumerConfig values: 
+	auto.commit.interval.ms = 1000
+	auto.offset.reset = latest
+	bootstrap.servers = [localhost:9092]
+	check.crcs = true
+	client.id = 
+	connections.max.idle.ms = 540000
+	enable.auto.commit = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = test
+	heartbeat.interval.ms = 3000
+	interceptor.classes = null
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 305000
+	retry.backoff.ms = 100
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class com.opencodez.serializer.DeveloperDeserializer
+
+2018-01-08 14:14:25.672  INFO 34056 --- [SimpleAsyncTaskExecutor-1] o.a.k.clients.consumer.ConsumerConfig    : ConsumerConfig values: 
+	auto.commit.interval.ms = 1000
+	auto.offset.reset = latest
+	bootstrap.servers = [localhost:9092]
+	check.crcs = true
+	client.id = consumer-1
+	connections.max.idle.ms = 540000
+	enable.auto.commit = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = test
+	heartbeat.interval.ms = 3000
+	interceptor.classes = null
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 305000
+	retry.backoff.ms = 100
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class com.opencodez.serializer.DeveloperDeserializer
+
+2018-01-08 14:14:26.284  INFO 34056 --- [SimpleAsyncTaskExecutor-1] o.a.kafka.common.utils.AppInfoParser     : Kafka version : 0.10.1.1
+2018-01-08 14:14:26.284  INFO 34056 --- [SimpleAsyncTaskExecutor-1] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId : f10ef2720b03b247
+2018-01-08 14:14:29.733  INFO 34056 --- [SimpleAsyncTaskExecutor-1] o.a.k.c.c.internals.AbstractCoordinator  : Discovered coordinator P5-LX-C6RWGC2.dir.svc.accenture.com:9092 (id: 2147483647 rack: null) for group test.
+2018-01-08 14:14:29.738  INFO 34056 --- [SimpleAsyncTaskExecutor-1] o.a.k.c.c.internals.ConsumerCoordinator  : Revoking previously assigned partitions [] for group test
+2018-01-08 14:14:29.738  INFO 34056 --- [SimpleAsyncTaskExecutor-1] o.a.k.c.c.internals.AbstractCoordinator  : (Re-)joining group test
+2018-01-08 14:14:29.848  INFO 34056 --- [SimpleAsyncTaskExecutor-1] o.a.k.c.c.internals.AbstractCoordinator  : Successfully joined group test with generation 1
+2018-01-08 14:14:29.850  INFO 34056 --- [SimpleAsyncTaskExecutor-1] o.a.k.c.c.internals.ConsumerCoordinator  : Setting newly assigned partitions [test-0] for group test
+2018-01-08 14:16:26.299  INFO 35384 --- [main] c.o.kafkademo.KafkaDemoApplicationTests  : Starting KafkaDemoApplicationTests on P5-LX-C6RWGC2 with PID 35384 (started by pavan.solapure in C:\Pavan Personal Data\Personal Wordpress\Github\opencodez-samples\kafka-demo)
+2018-01-08 14:16:26.299  INFO 35384 --- [main] c.o.kafkademo.KafkaDemoApplicationTests  : No active profile set, falling back to default profiles: default
+2018-01-08 14:16:26.345  INFO 35384 --- [main] s.c.a.AnnotationConfigApplicationContext : Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@44821a96: startup date [Mon Jan 08 14:16:26 IST 2018]; root of context hierarchy
+2018-01-08 14:16:27.278  INFO 35384 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.kafka.annotation.KafkaBootstrapConfiguration' of type [org.springframework.kafka.annotation.KafkaBootstrapConfiguration$$EnhancerBySpringCGLIB$$30c84e99] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-01-08 14:16:27.651  INFO 35384 --- [main] o.s.c.support.DefaultLifecycleProcessor  : Starting beans in phase 2147483647
+2018-01-08 14:16:27.667  INFO 35384 --- [main] c.o.kafkademo.KafkaDemoApplicationTests  : Started KafkaDemoApplicationTests in 1.975 seconds (JVM running for 4.012)
+2018-01-08 14:16:27.757  INFO 35384 --- [Thread-2] s.c.a.AnnotationConfigApplicationContext : Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@44821a96: startup date [Mon Jan 08 14:16:26 IST 2018]; root of context hierarchy
+2018-01-08 14:16:27.759  INFO 35384 --- [Thread-2] o.s.c.support.DefaultLifecycleProcessor  : Stopping beans in phase 2147483647
+2018-01-08 14:16:27.760  INFO 35384 --- [Thread-2] o.s.c.support.DefaultLifecycleProcessor  : Stopping beans in phase 0
+2018-01-08 14:27:25.150  INFO 22040 --- [main] c.o.kafkademo.KafkaDemoApplicationTests  : Starting KafkaDemoApplicationTests on P5-LX-C6RWGC2 with PID 22040 (started by pavan.solapure in C:\Pavan Personal Data\Personal Wordpress\Github\opencodez-samples\kafka-demo)
+2018-01-08 14:27:25.151  INFO 22040 --- [main] c.o.kafkademo.KafkaDemoApplicationTests  : No active profile set, falling back to default profiles: default
+2018-01-08 14:27:25.201  INFO 22040 --- [main] s.c.a.AnnotationConfigApplicationContext : Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@44821a96: startup date [Mon Jan 08 14:27:25 IST 2018]; root of context hierarchy
+2018-01-08 14:27:26.108  INFO 22040 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.kafka.annotation.KafkaBootstrapConfiguration' of type [org.springframework.kafka.annotation.KafkaBootstrapConfiguration$$EnhancerBySpringCGLIB$$b48bfa14] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-01-08 14:27:26.451  INFO 22040 --- [main] o.s.c.support.DefaultLifecycleProcessor  : Starting beans in phase 2147483647
+2018-01-08 14:27:26.467  INFO 22040 --- [main] c.o.kafkademo.KafkaDemoApplicationTests  : Started KafkaDemoApplicationTests in 1.896 seconds (JVM running for 3.458)
+2018-01-08 14:27:26.549  INFO 22040 --- [Thread-2] s.c.a.AnnotationConfigApplicationContext : Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@44821a96: startup date [Mon Jan 08 14:27:25 IST 2018]; root of context hierarchy
+2018-01-08 14:27:26.550  INFO 22040 --- [Thread-2] o.s.c.support.DefaultLifecycleProcessor  : Stopping beans in phase 2147483647
+2018-01-08 14:27:26.564  INFO 22040 --- [Thread-2] o.s.c.support.DefaultLifecycleProcessor  : Stopping beans in phase 0
