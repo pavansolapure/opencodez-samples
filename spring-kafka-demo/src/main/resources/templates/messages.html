@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<head th:replace="common/header :: head"></head>
+	
+	<!-- Add additional custom css here - START -->
+	
+	
+	<!-- Add additional custom css here - END -->
+</head>
+<body>
+	<div th:replace="common/header :: top-navigation">...</div>
+
+	<!-- Add page specific code/html START -->
+	
+	<div class="container">
+
+		<div class="page-header">
+			<h1>Kafka Messages</h1>
+		</div>
+		
+		
+		<div class="row" >
+		<div class="col-md-6">
+		
+		
+		
+		
+		
+		
+		<div class="panel panel-default" th:fragment="listUserData" id="listUserData">
+  <div class="panel-heading">
+    <h3 class="panel-title">Message List</h3>
+  </div>
+  <div class="panel-body">
+    <div class="table-responsive">
+		        <table class="table table-striped" id="kafka-messages">
+		            <thead>
+		                <tr>
+		                    <th>Data</th>
+		                </tr>
+		            </thead>
+		            
+		        </table>
+		       </div>
+  </div>
+</div>
+		
+		
+		</div>
+		</div>
+		
+		
+	</div>
+	
+	<div th:replace="common/footer :: footer">...</div>
+	
+	<!-- Add page specific code/html END -->
+	<script type="text/javascript" 	th:src="@{../js/jquery.sse.js}"></script>
+	<script type="text/javascript" th:src="@{../js/admin.js}"></script>
+
+
+	 
+    
+</body>
+</html>
