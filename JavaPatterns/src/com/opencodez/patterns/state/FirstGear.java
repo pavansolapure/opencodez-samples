@@ -19,4 +19,13 @@ public class FirstGear implements GearState {
 		return str;
 	}
 
+	@Override
+	public void accelarate(int speed) {
+		if(speed > 20) {
+			System.out.println("Can not be accelarated to " + speed + " kmph in gear 1");
+		} else {
+			System.out.println("Car is running at " + speed + " kmph in gear 1");
+		}		
+	}
+
 }

@@ -4,6 +4,15 @@ public class Car implements GearState {
 	
 	private GearState gear;
 	
+	@Override
+	public void accelarate(int speed) {
+		if(null == gear) {
+			System.out.println("Car can not be accelarated as its in Neutral");
+		} else {
+			gear.accelarate(speed);
+		}
+	}
+	
 	public void setGearState(GearState sgear) {
 		gear = sgear;
 	}
@@ -21,7 +30,4 @@ public class Car implements GearState {
 	public String toString() {
 		return gear.toString();
 	}	
-	
-	
-	
 }
