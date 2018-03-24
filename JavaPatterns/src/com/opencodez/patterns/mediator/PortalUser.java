@@ -19,6 +19,5 @@ public class PortalUser {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
 
 }
