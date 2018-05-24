@@ -1,0 +1,23 @@
+server:
+  port: 8098  #default port where the service will be started
+
+eureka:     #tells about the Eureka server details and its refresh time
+  instance:
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8761/eureka/
+    healthcheck:
+      enabled: true
+    lease:
+      duration: 5
+
+spring:   
+  application:
+    name: employee-service   #current service name to be used by the eureka server
+     
+
+logging:
+  level:
+    com.opencodez.microservice: DEBUG
