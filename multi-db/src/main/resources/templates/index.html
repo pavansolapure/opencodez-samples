@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+	        <table class="table table-striped">
+	            <thead>
+	                <tr>
+	                    <th>Id</th>
+	                    <th>Message</th>
+	                    <th>Created</th>
+	                </tr>
+	            </thead>
+	            <tbody>
+	                <tr th:each="msg : ${messages}">
+	                    <td th:text="${msg.id}">Id</td>
+	                    <td th:text="${msg.message}">Message</td>
+	                    <td th:text="${msg.created}">Created</td>
+	                </tr>
+	            </tbody>
+	        </table>
+	        
+	        <hr/>
+	        Below data is using JPQL
+	        <hr/>
+	        
+	        
+	        <table class="table table-striped">
+	            <thead>
+	                <tr>
+	                    <th>Id</th>
+	                    <th>Message</th>
+	                    <th>Created</th>
+	                </tr>
+	            </thead>
+	            <tbody>
+	                <tr th:each="msg : ${messages2}">
+	                    <td th:text="${msg.id}">Id</td>
+	                    <td th:text="${msg.message}">Message</td>
+	                    <td th:text="${msg.created}">Created</td>
+	                </tr>
+	            </tbody>
+	        </table>
+		        
+</body>
+</html>
