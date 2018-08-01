@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head" th:remove="tag">
+    <title>Opencodez - Starter Web Application</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    
+     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.6/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen" />
+          
+     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.6/css/bootstrap-theme.min.css}"
+          rel="stylesheet" media="screen" />  
+                    
+     <link th:href="@{../css/sticky-footer-navbar.css}" rel="stylesheet" media="screen" />
+     
+     <link th:href="@{../css/app.css}" rel="stylesheet" media="screen" />    
+      
+</head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" th:fragment="top-navigation" sec:authorize="isAnonymous()">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Opencodez</a>
+        </div>
+       
+      </div>
+    </nav>
+    
+    
+    <!-- top navigation for interfaces logged in user -->
+    
+      <nav class="navbar navbar-inverse navbar-fixed-top" th:fragment="top-navigation" sec:authorize="isAuthenticated()">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Opencodez</a>
+        </div>
+       
+      </div>
+    </nav>
+    
+    
+  </body>
+</html>

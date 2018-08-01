@@ -1,0 +1,7 @@
+.custom-panel-close {
+	margin-top: -17px;
+}
+
+.btn:focus, .btn:hover {
+    background-position: 0 -14px;
+}
