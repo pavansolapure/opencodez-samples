@@ -58,20 +58,57 @@ public class BaseController {
 		return mv;
 	}
 	
-	@RequestMapping(value="/users", method=RequestMethod.GET)
+	@RequestMapping(value="/users/mysql", method=RequestMethod.GET)
 	public String listUsers(Model model) {
-		return "users";
+		return "users_mysql";
 	}
 	
-	@RequestMapping(value="/users/paginated", method=RequestMethod.GET)
+	@RequestMapping(value="/users/paginated/mysql", method=RequestMethod.GET)
 	@ResponseBody
 	public String listUsersPaginated(HttpServletRequest request, HttpServletResponse response, Model model) {
 		
 		DataTableRequest<User> dataTableInRQ = new DataTableRequest<User>(request);
 		PaginationCriteria pagination = dataTableInRQ.getPaginationRequest();
 		
-		String baseQuery = "SELECT id as id, name as name, salary as salary, (SELECT COUNT(1) FROM USER) AS total_records  FROM USER";
+		String baseQuery = "SELECT USER_ID as id, USER_NAME as name, SALARY as salary, (SELECT COUNT(1) FROM MYUSERS) AS total_records  FROM MYUSERS";
 		String paginatedQuery = AppUtil.buildPaginatedQuery(baseQuery, pagination);
+		
+		System.out.println(paginatedQuery);
+		
+		Query query = entityManager.createNativeQuery(paginatedQuery, UserModel.class);
+		
+		@SuppressWarnings("unchecked")
+		List<UserModel> userList = query.getResultList();
+		
+		DataTableResults<UserModel> dataTableResult = new DataTableResults<UserModel>();
+		dataTableResult.setDraw(dataTableInRQ.getDraw());
+		dataTableResult.setListOfDataObjects(userList);
+		if (!AppUtil.isObjectEmpty(userList)) {
+			dataTableResult.setRecordsTotal(userList.get(0).getTotalRecords()
+					.toString());
+			if (dataTableInRQ.getPaginationRequest().isFilterByEmpty()) {
+				dataTableResult.setRecordsFiltered(userList.get(0).getTotalRecords()
+						.toString());
+			} else {
+				dataTableResult.setRecordsFiltered(Integer.toString(userList.size()));
+			}
+		}
+		return new Gson().toJson(dataTableResult);
+	}
+	
+	@RequestMapping(value="/users/oracle", method=RequestMethod.GET)
+	public String listUsersOracle(Model model) {
+		return "users";
+	}
+	
+	@RequestMapping(value="/users/paginated/orcl", method=RequestMethod.GET)
+	@ResponseBody
+	public String listUsersPaginatedForOracle(HttpServletRequest request, HttpServletResponse response, Model model) {
+		
+		DataTableRequest<User> dataTableInRQ = new DataTableRequest<User>(request);
+		PaginationCriteria pagination = dataTableInRQ.getPaginationRequest();
+		String baseQuery = "SELECT USER_ID as id, USER_NAME as name, SALARY as salary  FROM MYUSERS";
+		String paginatedQuery = AppUtil.buildPaginatedQueryForOracle(baseQuery, pagination);
 		
 		System.out.println(paginatedQuery);
 		

@@ -3,19 +3,27 @@
  */
 package com.opencodez.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * @author pavan.solapure
  *
  */
 @Entity
+@Table(name = "MYUSERS")
 public class User {
 
 	@Id
+	@Column(name = "USER_ID")
 	private Long id;
+	
+	@Column(name = "USER_NAME")
 	private String name;
+	
+	@Column(name = "SALARY")
 	private String salary;
 
 	

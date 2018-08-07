@@ -16,6 +16,6 @@ import com.opencodez.domain.User;
  */
 public interface UserRepository extends JpaRepository<User, Long> {
 	
-	@Query(value = "SELECT * FROM USER", nativeQuery = true)
+	@Query(value = "SELECT * FROM MYUSERS", nativeQuery = true)
 	List<User> findAllByUsernames(List<String> listOfUsernames);
 }

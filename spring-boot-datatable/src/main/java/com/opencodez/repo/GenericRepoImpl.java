@@ -29,7 +29,7 @@ public class GenericRepoImpl implements GenericRepo {
 	@Override
 	public List<UserModel> getUserModel() {
 
-		String qry = "SELECT id as id, name as name, salary as salary, 1 as total_records FROM USER";
+		String qry = "SELECT USER_ID as id, USER_NAME as name, salary as salary, 1 as total_records FROM MYUSERS";
 		Query query = entityManager.createNativeQuery(qry,
 				UserModel.class);
 

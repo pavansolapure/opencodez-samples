@@ -114,4 +114,25 @@ public class AppUtil {
 		}
 		return (null == finalQuery) ?  baseQuery : finalQuery;
 	}
+	
+	public static String buildPaginatedQueryForOracle(String baseQuery, PaginationCriteria paginationCriteria) {
+		
+		StringBuilder sb = new StringBuilder("SELECT * FROM (SELECT FILTERED_ORDERED_RESULTS.*, COUNT(1) OVER() total_records, ROWNUM AS RN FROM (SELECT BASEINFO.* FROM ( #BASE_QUERY# ) BASEINFO ) FILTERED_ORDERED_RESULTS #WHERE_CLAUSE# #ORDER_CLASUE# ) WHERE RN > (#PAGE_NUMBER# * #PAGE_SIZE#) AND RN <= (#PAGE_NUMBER# + 1) * #PAGE_SIZE# ");
+		String finalQuery = null;
+		
+		//Datatable start is set to 0, 5, 10 ..etc (5 is page size)
+		//For oracle paginated query we need page start from 1,2,3
+		
+		int pageNo = paginationCriteria.getPageNumber() / paginationCriteria.getPageSize();
+		paginationCriteria.setPageNumber(pageNo);
+		
+		if(!AppUtil.isObjectEmpty(paginationCriteria)) {
+			finalQuery = sb.toString().replaceAll("#BASE_QUERY#", baseQuery)
+							.replaceAll("#WHERE_CLAUSE#", ((AppUtil.isObjectEmpty(paginationCriteria.getFilterByClause())) ? "" : " WHERE ") + paginationCriteria.getFilterByClause())
+								.replaceAll("#ORDER_CLASUE#", paginationCriteria.getOrderByClause())
+									.replaceAll("#PAGE_NUMBER#", paginationCriteria.getPageNumber().toString())
+										.replaceAll("#PAGE_SIZE#", paginationCriteria.getPageSize().toString());
+		}
+		return (null == finalQuery) ?  baseQuery : finalQuery;
+	}
 }

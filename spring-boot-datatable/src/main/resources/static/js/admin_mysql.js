@@ -4,7 +4,7 @@ $( document ).ready(function() {
         "serverSide": true,
         "pageLength": 5,
         "ajax": {
-            "url": "/users/paginated/orcl",
+            "url": "/users/paginated/mysql",
             "data": function ( data ) {
 			 //process data before sent to server.
          }},
