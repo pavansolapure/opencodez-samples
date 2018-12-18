@@ -3,15 +3,19 @@
  */
 package com.opencodez.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -20,7 +24,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.google.gson.Gson;
 import com.opencodez.domain.User;
 import com.opencodez.domain.UserModel;
@@ -28,6 +31,7 @@ import com.opencodez.domain.pagination.DataTableRequest;
 import com.opencodez.domain.pagination.DataTableResults;
 import com.opencodez.domain.pagination.PaginationCriteria;
 import com.opencodez.repo.GenericRepo;
+import com.opencodez.repo.GenericPagingRepository;
 import com.opencodez.repo.UserRepository;
 import com.opencodez.util.AppUtil;
 
@@ -43,6 +47,9 @@ public class BaseController {
 	
 	@Autowired
 	private GenericRepo genericRepo;
+	
+	@Autowired
+	private GenericPagingRepository pagingRepo;
 	
 	/** The entity manager. */
 	@PersistenceContext
@@ -104,20 +111,30 @@ public class BaseController {
 	@RequestMapping(value="/users/paginated/orcl", method=RequestMethod.GET)
 	@ResponseBody
 	public String listUsersPaginatedForOracle(HttpServletRequest request, HttpServletResponse response, Model model) {
-		
 		DataTableRequest<User> dataTableInRQ = new DataTableRequest<User>(request);
-		PaginationCriteria pagination = dataTableInRQ.getPaginationRequest();
-		String baseQuery = "SELECT USER_ID as id, USER_NAME as name, SALARY as salary  FROM MYUSERS";
-		String paginatedQuery = AppUtil.buildPaginatedQueryForOracle(baseQuery, pagination);
+		String sortBy = dataTableInRQ.getOrder().getData();				
+		Direction dir = Direction.fromString(dataTableInRQ.getOrder().getSortDir());		
+		Sort sort = new Sort(new Sort.Order(dir, sortBy));
 		
-		System.out.println(paginatedQuery);
-		
-		Query query = entityManager.createNativeQuery(paginatedQuery, UserModel.class);
-		
-		@SuppressWarnings("unchecked")
-		List<UserModel> userList = query.getResultList();
-		
+		Integer pageNo =(Integer.parseInt(request.getParameter(PaginationCriteria.PAGE_NO)));
+		Integer pageSize = (Integer.parseInt(request.getParameter(PaginationCriteria.PAGE_SIZE)));		
+		Pageable pageable = new PageRequest(pageNo / pageSize, pageSize, sort);				
+        
+		Page<User> page = pagingRepo.findAll(pageable);
+        List<User> userListOld = page.getContent();
+        
+        List<UserModel> userList = new ArrayList<UserModel>();
+        for(User user : userListOld) {
+        	UserModel temp = new UserModel();
+        	temp.setId(user.getId());
+        	temp.setName(user.getName());
+        	temp.setSalary(user.getSalary());
+        	temp.setTotalRecords(20);
+        	userList.add(temp);
+        }
+        
 		DataTableResults<UserModel> dataTableResult = new DataTableResults<UserModel>();
+		
 		dataTableResult.setDraw(dataTableInRQ.getDraw());
 		dataTableResult.setListOfDataObjects(userList);
 		if (!AppUtil.isObjectEmpty(userList)) {
