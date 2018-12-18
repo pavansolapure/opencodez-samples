@@ -17,7 +17,7 @@ public class UserModel {
 	@Id
 	private Long id;
 	private String name;
-	private String salary;
+	private Integer salary;
 
 	private Integer totalRecords;
 
@@ -57,7 +57,7 @@ public class UserModel {
 	/**
 	 * @return the salary
 	 */
-	public String getSalary() {
+	public Integer getSalary() {
 		return salary;
 	}
 
@@ -65,7 +65,7 @@ public class UserModel {
 	 * @param salary
 	 *            the salary to set
 	 */
-	public void setSalary(String salary) {
+	public void setSalary(Integer salary) {
 		this.salary = salary;
 	}
 
