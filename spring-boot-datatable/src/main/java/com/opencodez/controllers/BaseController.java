@@ -3,7 +3,6 @@
  */
 package com.opencodez.controllers;
 
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -29,8 +28,6 @@ import com.opencodez.domain.UserModel;
 import com.opencodez.domain.pagination.DataTableRequest;
 import com.opencodez.domain.pagination.DataTableResults;
 import com.opencodez.domain.pagination.PaginationCriteria;
-import com.opencodez.repo.GenericRepo;
-import com.opencodez.repo.GenericPagingRepository;
 import com.opencodez.repo.UserRepository;
 import com.opencodez.util.AppUtil;
 
@@ -40,26 +37,18 @@ import com.opencodez.util.AppUtil;
  */
 @Controller
 public class BaseController {
-
 	@Autowired
 	private UserRepository userRepo;
-	
-	@Autowired
-	private GenericRepo genericRepo;
-	
-	@Autowired
-	private GenericPagingRepository pagingRepo;
 	
 	/** The entity manager. */
 	@PersistenceContext
 	private EntityManager entityManager;
 	
-		
 	@RequestMapping(value="/", method = RequestMethod.GET)
 	public ModelAndView home(@RequestParam(value = "name", defaultValue = "World") String name) {
 		ModelAndView mv = new ModelAndView("index");
-		mv.addObject("userModel", new UserModel());
-		List<UserModel> userList  = genericRepo.getUserModel();
+		mv.addObject("userModel", new User());
+		List<User> userList = userRepo.findAll();		
 		mv.addObject("userlist", userList);
 		return mv;
 	}
@@ -69,7 +58,7 @@ public class BaseController {
 		return "users";
 	}
 	
-	@RequestMapping(value="/users/paginated/orcl", method=RequestMethod.GET)
+	@RequestMapping(value="/users/paginated", method=RequestMethod.GET)
 	@ResponseBody
 	public String listUsersPaginatedForOracle(HttpServletRequest request, HttpServletResponse response, Model model) {
 		DataTableRequest<User> dataTableInRQ = new DataTableRequest<User>(request);
@@ -81,20 +70,16 @@ public class BaseController {
 		Integer pageSize = (Integer.parseInt(request.getParameter(PaginationCriteria.PAGE_SIZE)));		
 		Pageable pageable = new PageRequest(pageNo / pageSize, pageSize, sort);				
         
-		Page<User> page = pagingRepo.findAll(pageable);
-        List<User> userListOld = page.getContent();
+		Page<User> page = userRepo.findAll(pageable);
+		
+		Integer totalRecords = (int)page.getTotalElements();
+		
+        List<User> userList = page.getContent();
+        for(User user : userList) {
+        	user.setTotalRecords(totalRecords);
+        }        
         
-        List<UserModel> userList = new ArrayList<UserModel>();
-        for(User user : userListOld) {
-        	UserModel temp = new UserModel();
-        	temp.setId(user.getId());
-        	temp.setName(user.getName());
-        	temp.setSalary(user.getSalary());
-        	temp.setTotalRecords(20);
-        	userList.add(temp);
-        }
-        
-		DataTableResults<UserModel> dataTableResult = new DataTableResults<UserModel>();
+		DataTableResults<User> dataTableResult = new DataTableResults<User>();
 		
 		dataTableResult.setDraw(dataTableInRQ.getDraw());
 		dataTableResult.setListOfDataObjects(userList);
