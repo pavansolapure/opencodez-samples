@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,46 +63,8 @@ public class BaseController {
 		mv.addObject("userlist", userList);
 		return mv;
 	}
-	
-	@RequestMapping(value="/users/mysql", method=RequestMethod.GET)
-	public String listUsers(Model model) {
-		return "users_mysql";
-	}
-	
-	@RequestMapping(value="/users/paginated/mysql", method=RequestMethod.GET)
-	@ResponseBody
-	public String listUsersPaginated(HttpServletRequest request, HttpServletResponse response, Model model) {
-		
-		DataTableRequest<User> dataTableInRQ = new DataTableRequest<User>(request);
-		PaginationCriteria pagination = dataTableInRQ.getPaginationRequest();
-		
-		String baseQuery = "SELECT USER_ID as id, USER_NAME as name, SALARY as salary, (SELECT COUNT(1) FROM MYUSERS) AS total_records  FROM MYUSERS";
-		String paginatedQuery = AppUtil.buildPaginatedQuery(baseQuery, pagination);
-		
-		System.out.println(paginatedQuery);
-		
-		Query query = entityManager.createNativeQuery(paginatedQuery, UserModel.class);
-		
-		@SuppressWarnings("unchecked")
-		List<UserModel> userList = query.getResultList();
-		
-		DataTableResults<UserModel> dataTableResult = new DataTableResults<UserModel>();
-		dataTableResult.setDraw(dataTableInRQ.getDraw());
-		dataTableResult.setListOfDataObjects(userList);
-		if (!AppUtil.isObjectEmpty(userList)) {
-			dataTableResult.setRecordsTotal(userList.get(0).getTotalRecords()
-					.toString());
-			if (dataTableInRQ.getPaginationRequest().isFilterByEmpty()) {
-				dataTableResult.setRecordsFiltered(userList.get(0).getTotalRecords()
-						.toString());
-			} else {
-				dataTableResult.setRecordsFiltered(Integer.toString(userList.size()));
-			}
-		}
-		return new Gson().toJson(dataTableResult);
-	}
-	
-	@RequestMapping(value="/users/oracle", method=RequestMethod.GET)
+
+	@RequestMapping(value="/users", method=RequestMethod.GET)
 	public String listUsersOracle(Model model) {
 		return "users";
 	}
