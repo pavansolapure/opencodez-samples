@@ -24,7 +24,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import com.google.gson.Gson;
 import com.opencodez.domain.User;
-import com.opencodez.domain.UserModel;
 import com.opencodez.domain.pagination.DataTableRequest;
 import com.opencodez.domain.pagination.DataTableResults;
 import com.opencodez.domain.pagination.PaginationCriteria;
@@ -97,7 +96,7 @@ public class BaseController {
 	}
 	
 	@RequestMapping(value="/adduser", method=RequestMethod.POST)
-	public String addUser(@ModelAttribute UserModel userModel, Model model) {
+	public String addUser(@ModelAttribute User userModel, Model model) {
 		if(null != userModel) {
 			
 			if(!AppUtil.isObjectEmpty(userModel.getId()) && 

@@ -7,7 +7,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 /**
  * @author pavan.solapure
@@ -28,10 +27,6 @@ public class User {
 	private Integer salary;
 	
 	private Integer totalRecords;
-
-	@Transient
-	private Integer rn;
-
 	
 	/**
 	 * @return the id
@@ -75,11 +70,5 @@ public class User {
 	}
 	public void setTotalRecords(Integer totalRecords) {
 		this.totalRecords = totalRecords;
-	}
-	public Integer getRn() {
-		return rn;
-	}
-	public void setRn(Integer rn) {
-		this.rn = rn;
-	}
+	}	
 }
