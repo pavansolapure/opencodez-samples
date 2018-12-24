@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  * @author pavan.solapure
@@ -26,6 +27,7 @@ public class User {
 	@Column(name = "SALARY")
 	private Integer salary;
 	
+	@Transient
 	private Integer totalRecords;
 	
 	/**
