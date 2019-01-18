@@ -144,7 +144,7 @@ def plot_confusion_matrix(cm, classes,
     plt.xlabel('Predicted label')
 
 
-y_pred = model.predict(x_test);
+y_pred = model.predict(x_test)
 cnf_matrix = confusion_matrix(np.argmax(y_test, axis=1), np.argmax(y_pred, axis=1))
 
 # Plot normalized confusion matrix
