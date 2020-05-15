@@ -48,3 +48,4 @@ keras-text-classification		https://www.opencodez.com/python/text-classification-
 # Oracle
 Oracle							https://www.opencodez.com/oracle/oracle-job-scheduler-guide-examples-part-1.htm
 
+#it is just used for helping other 
