@@ -8,7 +8,7 @@ CREATE TABLE products (
     prd_price  FLOAT,
     PRIMARY KEY (prd_id)
 );
-ALTER TABLE orders AUTO_INCREMENT=1001;
+ALTER TABLE products AUTO_INCREMENT=1001;
 
 DROP TABLE IF EXISTS  orders;
 CREATE TABLE orders (
